@@ -539,6 +539,20 @@
     .form-group input:focus, .form-group textarea:focus {
       outline: none; border-color: var(--accent);
     }
+
+    .kakao-cta-btn {
+      display: flex; align-items: center; gap: .8rem;
+      background: #FEE500; color: #191919;
+      padding: 1.1rem 3rem; border-radius: 50px;
+      font-size: 1.05rem; font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(254,229,0,0.3);
+      transition: all .3s;
+    }
+    .kakao-cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(254,229,0,0.4);
+    }
     .form-submit {
       grid-column: 1 / -1;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -672,7 +686,7 @@
     <li><a href="#channels">Support</a></li>
     <li><a href="#contact">상담문의</a></li>
   </ul>
-  <a href="#contact" class="btn-primary nav-cta">CSO 대표님 모집 →</a>
+  <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="btn-primary nav-cta">CSO 대표님 모집 →</a>
 </nav>
 
 <!-- 히어로 섹션 -->
@@ -700,7 +714,7 @@
       든든한 파트너가 되겠습니다.
     </p>
     <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">CSO 대표님 모집 →</a>
+      <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="btn-primary">CSO 대표님 모집 →</a>
       <a href="#strengths" class="btn-secondary">핵심강점 보기</a>
     </div>
   </div>
@@ -932,35 +946,22 @@
       상담시간: 오전 9시 30분 ~ 오후 6시 30분
     </p>
 
-    <form class="contact-form animate-in" onsubmit="return false;">
-      <div class="form-group">
-        <label>이름</label>
-        <input type="text" placeholder="성함을 입력해 주세요">
-      </div>
-      <div class="form-group">
-        <label>연락처</label>
-        <input type="tel" placeholder="010-0000-0000">
-      </div>
-      <div class="form-group">
-        <label>이메일</label>
-        <input type="email" placeholder="example@email.com">
-      </div>
-      <div class="form-group">
-        <label>제목</label>
-        <input type="text" placeholder="문의 제목을 입력해 주세요">
-      </div>
-      <div class="form-group full">
-        <label>상담내용</label>
-        <textarea rows="5" placeholder="상담 내용을 자세히 입력해 주세요"></textarea>
-      </div>
-      <button class="form-submit">문의하기</button>
-    </form>
+    <div class="animate-in" style="margin-top:3rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+      <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="kakao-cta-btn">
+        <span style="font-size:1.4rem;">💬</span>
+        <span>카카오톡으로 1:1 상담하기</span>
+      </a>
+      <p style="font-size:.85rem; color:var(--text2); font-weight:300;">
+        버튼을 누르면 카카오톡 채널로 바로 연결되어<br>
+        실시간으로 상담받으실 수 있습니다.
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- 플로팅 버튼 -->
 <div class="floating-btns">
-  <a href="#" class="float-btn float-kakao">
+  <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="float-btn float-kakao">
     <span class="ficon">💬</span>
     <span>카카오</span>
   </a>
