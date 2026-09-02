@@ -53,6 +53,11 @@
         rgba(2,12,27,0.45) 100%
       );
     }
+    @media (max-width: 900px) {
+      .hero-video-bg video {
+        object-position: 65% center;
+      }
+    }
 
     /* 커스텀 커서 */
     * { cursor: none; }
@@ -759,7 +764,7 @@
 
   <!-- 히어로 비디오 배경 -->
   <div class="hero-video-bg">
-    <video autoplay muted loop playsinline poster="hero-poster.png">
+    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline poster="hero-poster.png">
       <source src="hero.mp4" type="video/mp4">
     </video>
     <div class="hero-video-overlay"></div>
@@ -1066,6 +1071,33 @@
 </footer>
 
 <script>
+// ─── 페이지 진입 시 항상 맨 위에서 시작 ───
+if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+window.scrollTo(0, 0);
+window.addEventListener('load', () => window.scrollTo(0, 0));
+
+// ─── 모바일 비디오 강제 재생 ───
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+  heroVideo.muted = true;
+  heroVideo.setAttribute('muted', '');
+  const tryPlay = () => {
+    const p = heroVideo.play();
+    if (p !== undefined) {
+      p.catch(() => {
+        const resume = () => { heroVideo.play(); };
+        document.addEventListener('touchstart', resume, { once: true });
+        document.addEventListener('click', resume, { once: true });
+      });
+    }
+  };
+  if (heroVideo.readyState >= 2) { tryPlay(); }
+  else { heroVideo.addEventListener('loadeddata', tryPlay, { once: true }); }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && heroVideo.paused) tryPlay();
+  });
+}
+
 // ─── 로더 ───
 let prog = 0;
 const bar = document.getElementById('loaderBar');
@@ -1079,6 +1111,7 @@ const iv = setInterval(() => {
   if (v >= 100) {
     clearInterval(iv);
     setTimeout(() => {
+      window.scrollTo(0, 0);
       loaderEl.style.opacity = '0';
       setTimeout(() => { loaderEl.style.display = 'none'; startCounters(); }, 700);
     }, 300);
