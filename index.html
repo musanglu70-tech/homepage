@@ -54,8 +54,26 @@
       );
     }
     @media (max-width: 900px) {
+      .hero-video-bg {
+        background: linear-gradient(160deg, #0a1929 0%, #14304f 100%);
+      }
       .hero-video-bg video {
-        object-position: 65% center;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: auto;
+        min-height: 42vh;
+        object-fit: cover;
+        object-position: center top;
+      }
+      .hero-video-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(2,12,27,0.55) 0%,
+          rgba(2,12,27,0.75) 38%,
+          rgba(2,12,27,0.94) 60%,
+          rgba(2,12,27,0.97) 100%
+        );
       }
     }
 
@@ -666,60 +684,121 @@
 
     /* 반응형 */
     @media (max-width: 900px) {
-      nav { padding: .8rem 1.2rem; }
+      nav { padding: .75rem 1rem; }
       .nav-links { display: none; }
-      .nav-logo { gap: .5rem; }
-      .nav-logo-img { width: 32px; height: 32px; }
+      .nav-logo { gap: .45rem; }
+      .nav-logo-img { width: 30px; height: 30px; }
       .nav-logo-text {
-        font-size: 1.05rem;
+        font-size: 1rem;
         white-space: nowrap;
       }
       .nav-cta {
-        font-size: .72rem;
-        padding: .5rem .9rem;
+        font-size: .7rem;
+        padding: .48rem .85rem;
         white-space: nowrap;
       }
-      .hero-content { padding: 0 1.2rem; padding-right: 5.2rem; max-width: 100%; }
-      .hero-handshake { width: 50%; opacity: .4; right: 0; }
-      .hero-badge { font-size: .72rem; padding: .35rem .8rem; }
-      .hero-title { font-size: 2.2rem; }
-      .hero-tagline { font-size: 1.05rem; }
-      .hero-desc { font-size: .85rem; }
-      .hero-buttons .btn-primary, .hero-buttons .btn-secondary {
-        font-size: .82rem; padding: .7rem 1.4rem;
+
+      /* 히어로: 영상 위 / 텍스트 아래 배치 */
+      #hero {
+        height: auto; min-height: 100vh;
+        align-items: flex-end;
+        padding-top: 40vh;
+        padding-bottom: 8.5rem;
       }
+      .hero-content {
+        padding: 0 1.1rem;
+        padding-right: 4.6rem;
+        max-width: 100%;
+      }
+      .hero-handshake { display: none; }
+      .hero-badge {
+        font-size: .7rem; padding: .32rem .75rem;
+        margin-bottom: .9rem;
+      }
+      .hero-title {
+        font-size: clamp(1.7rem, 8vw, 2.3rem);
+        line-height: 1.15;
+        margin-bottom: .7rem;
+        word-break: keep-all;
+      }
+      .hero-tagline {
+        font-size: clamp(.95rem, 4.2vw, 1.15rem);
+        line-height: 1.55;
+        margin-bottom: .8rem;
+        word-break: keep-all;
+      }
+      .hero-desc {
+        font-size: .82rem;
+        line-height: 1.65;
+        margin-bottom: 1.4rem;
+        word-break: keep-all;
+      }
+      .hero-desc br { display: none; }
+      .hero-buttons { gap: .6rem; }
+      .hero-buttons .btn-primary,
+      .hero-buttons .btn-secondary {
+        font-size: .8rem; padding: .68rem 1.3rem;
+        white-space: nowrap;
+      }
+      .scroll-indicator { display: none; }
+
+      /* 통계 바 */
       .stats-bar { flex-wrap: wrap; }
-      .stat-item { min-width: 50%; padding: 1rem .8rem; }
-      .stat-number { font-size: 1.5rem; }
+      .stat-item { min-width: 50%; padding: .9rem .6rem; }
+      .stat-number { font-size: 1.4rem; }
+      .stat-label { font-size: .68rem; word-break: keep-all; }
+
+      /* 섹션들 */
       .strengths-grid, .services-grid { grid-template-columns: 1fr; }
       .commission-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .channels-grid { grid-template-columns: 1fr 1fr; }
+      .channels-grid { grid-template-columns: 1fr; }
       .contact-form { grid-template-columns: 1fr; }
       .contact-form .full { grid-column: 1; }
-      .section-inner { padding: 4rem 1.2rem; }
-      footer { flex-direction: column; }
+      .section-inner { padding: 3.5rem 1.1rem; }
+      .section-title { word-break: keep-all; }
+      .section-desc { word-break: keep-all; font-size: .9rem; }
+      .strength-card { padding: 1.8rem 1.4rem; }
+      .strength-desc, .service-desc { word-break: keep-all; }
+      .service-card { padding: 1.5rem 1.3rem; }
+      .commission-rate { font-size: 3rem; }
+      .commission-highlight { padding: 1.8rem 1.3rem; }
+      .contact-inner { padding: 4rem 1.1rem; }
+      .kakao-cta-btn {
+        font-size: .92rem; padding: .95rem 1.8rem;
+        text-align: center; word-break: keep-all;
+      }
+
+      footer { flex-direction: column; padding: 2.5rem 1.2rem; }
       .footer-right { text-align: left; }
+      .footer-info, .footer-right { font-size: .74rem; }
+
       * { cursor: auto !important; }
       .cursor, .cursor-ring { display: none; }
 
       /* 플로팅 버튼 모바일 축소 */
       .floating-btns {
-        right: .7rem; bottom: 1rem; gap: .45rem;
+        right: .6rem; bottom: .9rem; gap: .4rem;
       }
       .float-btn {
-        width: 52px; height: 48px;
-        font-size: .55rem; gap: .2rem;
+        width: 48px; height: 44px;
+        font-size: .52rem; gap: .15rem;
         border-radius: 8px;
       }
-      .float-btn .ficon { font-size: 1.05rem; }
-      .float-top { height: 40px; font-size: .55rem; }
+      .float-btn .ficon { font-size: .95rem; }
+      .float-top { height: 38px; font-size: .52rem; }
     }
 
     @media (max-width: 420px) {
-      .nav-logo-text { font-size: .92rem; }
-      .nav-cta { font-size: .66rem; padding: .45rem .7rem; }
-      .hero-content { padding-right: 4.6rem; }
-      .hero-title { font-size: 1.8rem; }
+      .nav-logo-text { font-size: .88rem; }
+      .nav-logo-img { width: 26px; height: 26px; }
+      .nav-cta { font-size: .62rem; padding: .42rem .65rem; }
+      #hero { padding-top: 36vh; padding-bottom: 8rem; }
+      .hero-content { padding-right: 4.2rem; }
+      .hero-title { font-size: 1.65rem; }
+      .hero-tagline { font-size: .92rem; }
+      .hero-buttons { flex-direction: column; align-items: flex-start; }
+      .hero-buttons .btn-primary,
+      .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
     }
   </style>
 </head>
