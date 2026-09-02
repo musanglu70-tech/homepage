@@ -78,22 +78,28 @@
     /* 로딩 스크린 */
     #loader {
       position: fixed; inset: 0;
-      background: var(--bg);
+      background: #ffffff;
       z-index: 9999;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       transition: opacity .8s ease;
     }
-    .loader-logo {
-      font-size: 2rem; font-weight: 900;
-      color: white; letter-spacing: -0.02em;
+    .loader-logo-wrap {
+      display: flex; align-items: center; gap: .9rem;
       margin-bottom: 2rem;
       opacity: 0; animation: fadeIn .6s .2s forwards;
     }
-    .loader-logo span { color: var(--accent2); }
+    .loader-logo-img {
+      width: 52px; height: 52px;
+      object-fit: contain;
+    }
+    .loader-logo-text {
+      font-size: 1.7rem; font-weight: 800;
+      color: #1a1a2e; letter-spacing: -0.02em;
+    }
     .loader-bar-wrap {
-      width: 260px; height: 2px;
-      background: rgba(255,255,255,0.1);
+      width: 260px; height: 3px;
+      background: rgba(0,0,0,0.08);
       border-radius: 2px; overflow: hidden;
     }
     .loader-bar {
@@ -103,7 +109,7 @@
     }
     .loader-pct {
       margin-top: 1rem; font-size: .8rem;
-      color: var(--text2); letter-spacing: .1em;
+      color: #888; letter-spacing: .1em;
     }
     @keyframes fadeIn { to { opacity:1; } }
 
@@ -678,7 +684,10 @@
 
 <!-- 로딩 스크린 -->
 <div id="loader">
-  <div class="loader-logo">WR<span> 우리메디텍</span></div>
+  <div class="loader-logo-wrap">
+    <img src="logo.png" alt="우리메디텍" class="loader-logo-img">
+    <span class="loader-logo-text">(주)우리메디텍</span>
+  </div>
   <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
   <div class="loader-pct" id="loaderPct">0%</div>
 </div>
