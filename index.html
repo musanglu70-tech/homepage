@@ -147,19 +147,19 @@
       color: var(--accent); letter-spacing: -.02em;
     }
     .nav-logo-text {
-      font-size: 1rem; font-weight: 700;
-      color: white; letter-spacing: -.02em;
+      font-size: 1.15rem; font-weight: 800;
+      color: #1a1a2e; letter-spacing: -.02em;
     }
     .nav-links {
       display: flex; gap: 2.5rem;
       list-style: none;
     }
     .nav-links a {
-      color: var(--text2); text-decoration: none;
-      font-size: .9rem; font-weight: 400;
-      transition: color .2s; letter-spacing: .02em;
+      color: #333; text-decoration: none;
+      font-size: .92rem; font-weight: 600;
+      transition: color .2s; letter-spacing: .01em;
     }
-    .nav-links a:hover { color: white; }
+    .nav-links a:hover { color: var(--accent); }
     .nav-cta {
       background: var(--accent);
       color: white; border: none;
@@ -1129,7 +1129,8 @@ document.querySelectorAll('.animate-in,.strength-card,.service-card,.commission-
 // ─── 스크롤 시 nav 스타일 ───
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
-  nav.style.background = scrollY > 50 ? 'rgba(2,12,27,0.95)' : 'rgba(2,12,27,0.7)';
+  nav.style.background = scrollY > 50 ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.98)';
+  nav.style.boxShadow = scrollY > 50 ? '0 2px 16px rgba(0,0,0,0.08)' : '0 2px 12px rgba(0,0,0,0.04)';
 });
 </script>
 </body>
