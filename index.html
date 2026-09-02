@@ -567,28 +567,40 @@
     /* 플로팅 버튼 */
     .floating-btns {
       position: fixed; right: 1.5rem; bottom: 2rem;
-      display: flex; flex-direction: column; gap: .6rem;
+      display: flex; flex-direction: column; gap: .7rem;
       z-index: 999;
     }
     .float-btn {
-      width: 52px; height: 52px; border-radius: 12px;
+      width: 84px; height: 74px; border-radius: 10px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      font-size: .7rem; font-weight: 600;
-      text-decoration: none; color: white;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-      transition: transform .2s;
-      gap: .15rem;
+      font-size: .78rem; font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      transition: transform .2s, box-shadow .2s;
+      gap: .5rem;
+      letter-spacing: -.01em;
     }
-    .float-btn:hover { transform: scale(1.08); }
-    .float-btn .ficon { font-size: 1.2rem; }
-    .float-kakao { background: #FEE500; color: #191919; }
-    .float-phone { background: var(--accent); }
-    .float-blog { background: #03C75A; }
+    .float-btn:hover { transform: scale(1.06); box-shadow: 0 10px 24px rgba(0,0,0,0.4); }
+    .float-btn .ficon {
+      font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .float-kakao { background: #FEE500; color: #3c1e1e; }
+    .float-inquiry {
+      background: #1a1a1a; color: #d4a843;
+      border: 1px solid rgba(212,168,67,0.25);
+    }
+    .float-phone {
+      background: #1a1a1a; color: #d4a843;
+      border: 1px solid rgba(212,168,67,0.25);
+    }
+    .float-blog { background: #17c964; color: #06280f; }
     .float-top {
       background: rgba(10,25,47,0.9);
       border: 1px solid rgba(41,121,255,0.3);
-      font-size: .65rem;
+      color: var(--text2);
+      font-size: .7rem; height: 60px;
     }
 
     /* 푸터 */
@@ -963,11 +975,15 @@
 <div class="floating-btns">
   <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="float-btn float-kakao">
     <span class="ficon">💬</span>
-    <span>카카오</span>
+    <span>카톡상담</span>
+  </a>
+  <a href="#contact" class="float-btn float-inquiry">
+    <span class="ficon">📋</span>
+    <span>상담문의</span>
   </a>
   <a href="tel:043-222-0339" class="float-btn float-phone">
     <span class="ficon">📞</span>
-    <span>전화</span>
+    <span>전화상담</span>
   </a>
   <a href="#" class="float-btn float-blog">
     <span class="ficon">✏️</span>
