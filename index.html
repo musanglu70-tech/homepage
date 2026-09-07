@@ -80,23 +80,36 @@
     /* 커스텀 커서 */
     * { cursor: none; }
     .cursor {
-      position: fixed; width: 10px; height: 10px;
+      position: fixed; width: 8px; height: 8px;
       background: var(--accent); border-radius: 50%;
       pointer-events: none; z-index: 99999;
       transform: translate(-50%,-50%);
-      transition: width .2s, height .2s, background .2s;
-      mix-blend-mode: difference;
+      transition: width .2s, height .2s, opacity .2s;
+      opacity: .85;
     }
-    .cursor-ring {
-      position: fixed; width: 36px; height: 36px;
-      border: 1.5px solid var(--accent);
-      border-radius: 50%; pointer-events: none; z-index: 99998;
+    .cursor-mascot {
+      position: fixed;
+      width: 56px; height: 56px;
+      pointer-events: none; z-index: 99998;
       transform: translate(-50%,-50%);
-      transition: all .12s ease;
-      opacity: 0.5;
+      transition: width .25s ease, height .25s ease, opacity .25s ease;
+      opacity: 0;
+      will-change: transform;
+      filter: drop-shadow(0 4px 10px rgba(20,33,61,0.22));
     }
-    .cursor.hover { width: 20px; height: 20px; background: white; }
-    .cursor-ring.hover { width: 60px; height: 60px; opacity: 0.3; }
+    .cursor-mascot.ready { opacity: 1; }
+    .cursor-mascot img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+      animation: mascotFloat 2.4s ease-in-out infinite;
+    }
+    @keyframes mascotFloat {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-5px) rotate(3deg); }
+    }
+    .cursor.hover { width: 14px; height: 14px; opacity: .5; }
+    .cursor-mascot.hover { width: 74px; height: 74px; }
 
     /* 로딩 스크린 */
     #loader {
@@ -776,7 +789,7 @@
       .footer-info, .footer-right { font-size: .74rem; }
 
       * { cursor: auto !important; }
-      .cursor, .cursor-ring { display: none; }
+      .cursor, .cursor-mascot { display: none; }
 
       /* 플로팅 버튼 모바일 축소 */
       .floating-btns {
@@ -809,7 +822,7 @@
 
 <!-- 커스텀 커서 -->
 <div class="cursor"></div>
-<div class="cursor-ring"></div>
+<div class="cursor-mascot"><img src="mascot.png" alt=""></div>
 
 <!-- 로딩 스크린 -->
 <div id="loader">
@@ -1200,20 +1213,30 @@ const iv = setInterval(() => {
   }
 }, 70);
 
-// ─── 커서 ───
+// ─── 커서 (마스코트 추적) ───
 const cur = document.querySelector('.cursor');
-const ring = document.querySelector('.cursor-ring');
-let mx=0, my=0, rx=0, ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-(function animRing(){
-  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
+const mascot = document.querySelector('.cursor-mascot');
+let mx=0, my=0, rx=0, ry=0, mascotReady=false;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  if(!mascotReady){
+    rx=mx; ry=my;
+    mascot.classList.add('ready');
+    mascotReady=true;
+  }
+});
+(function animMascot(){
+  rx += (mx-rx)*0.14; ry += (my-ry)*0.14;
+  mascot.style.left=rx+'px'; mascot.style.top=ry+'px';
+  requestAnimationFrame(animMascot);
 })();
 document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.classList.add('hover');ring.classList.add('hover');});
-  el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');ring.classList.remove('hover');});
+  el.addEventListener('mouseenter',()=>{cur.classList.add('hover');mascot.classList.add('hover');});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');mascot.classList.remove('hover');});
 });
+document.addEventListener('mouseleave',()=>{mascot.classList.remove('ready');});
+document.addEventListener('mouseenter',()=>{if(mascotReady)mascot.classList.add('ready');});
 
 // ─── Three.js 파티클 네트워크 배경 ───
 const isMobile = true; // 비디오 배경 사용으로 Three.js 비활성화
