@@ -612,7 +612,13 @@
       border: 1px solid rgba(212,168,67,0.25);
     }
     .float-blog { background: #17c964; color: #06280f; }
-    .float-app { background: #ffffff; color: #1a1a2e; border: 1px solid rgba(0,0,0,0.12); }
+    .float-app { background: #63b566; color: #10240f; }
+    .float-app .ficon {
+      background: #fff;
+      width: 26px; height: 26px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+    }
     .float-top {
       background: rgba(10,25,47,0.9);
       border: 1px solid rgba(41,121,255,0.3);
@@ -766,6 +772,8 @@
         border-radius: 8px;
       }
       .float-btn .ficon { font-size: .95rem; }
+      .float-app .ficon { width: 22px; height: 22px; border-radius: 5px; }
+      .float-app .ficon svg { width: 16px; height: 16px; }
       .float-top { height: 38px; font-size: .52rem; }
     }
 
@@ -1097,8 +1105,15 @@
     <span>전화상담</span>
   </a>
   <a href="https://play.google.com/store/apps/details?id=com.woorieditech.cso" target="_blank" rel="noopener" class="float-btn float-app">
-    <span class="ficon">▶️</span>
-    <span>앱 설치</span>
+    <span class="ficon">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#4285F4"/>
+        <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#EA4335"/>
+        <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81Z" fill="#FBBC04"/>
+        <path d="M6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z" fill="#34A853"/>
+      </svg>
+    </span>
+    <span>구글앱</span>
   </a>
   <a href="#hero" class="float-btn float-top">
     <span class="ficon">↑</span>
