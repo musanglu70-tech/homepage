@@ -412,11 +412,12 @@
       border: 1px solid rgba(41,121,255,0.18);
     }
     .strength-highlight.blurred {
-      filter: blur(2.5px);
       user-select: none;
       -webkit-user-select: none;
       pointer-events: none;
     }
+    .strength-highlight .blur-name { filter: blur(3.2px); }
+    .strength-highlight .blur-num { filter: blur(0.8px); }
 
     /* 서비스 섹션 */
     #services {
@@ -463,9 +464,10 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
     .commission-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
+      display: grid; grid-template-columns: 1fr;
+      gap: 4rem; align-items: center; justify-items: center;
     }
+    .commission-highlight { max-width: 560px; width: 100%; }
     .commission-highlight {
       background: linear-gradient(135deg, rgba(229,57,53,0.08), rgba(255,209,102,0.04));
       border: 1px solid rgba(229,57,53,0.25);
@@ -676,6 +678,13 @@
       color: #cdd7e8;
       font-size: .7rem; height: 60px;
     }
+    .float-youtube {
+      width: 84px; display: block;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));
+      transition: transform .2s;
+    }
+    .float-youtube:hover { transform: scale(1.06); }
+    .float-youtube img { width: 100%; height: auto; display: block; }
 
     /* 푸터 */
     footer {
@@ -850,6 +859,7 @@
       .float-app .ficon { width: 22px; height: 22px; border-radius: 5px; }
       .float-app .ficon svg { width: 16px; height: 16px; }
       .float-top { height: 38px; font-size: .52rem; }
+      .float-youtube { width: 48px; }
 
       /* 블로그 배너 - 모바일 */
       .blog-banner {
@@ -956,7 +966,7 @@
     </div>
     <div class="stat-item">
       <div class="stat-number" data-target="250">0</div>
-      <div class="stat-label">전문 CSO 인력</div>
+      <div class="stat-label">CSO 파트너 대표님</div>
     </div>
     <div class="stat-item">
       <div class="stat-number" data-target="100">0</div>
@@ -988,37 +998,6 @@
           </div>
         </div>
       </div>
-
-      <ul class="commission-list">
-        <li class="animate-in">
-          <span class="icon">📋</span>
-          <div class="text">
-            <strong>국내 150여개 제약사 직거래</strong>
-            <span>250평 이상의 창고에서 위수탁 사업을 운영하며 국내 최저 위탁수수료 보장</span>
-          </div>
-        </li>
-        <li class="animate-in" style="transition-delay:.1s">
-          <span class="icon">📱</span>
-          <div class="text">
-            <strong>모바일앱으로 간편 확인</strong>
-            <span>모바일앱으로 1초 만에 전체 품목까지 요율을 높은 순으로 즉시 확인 가능</span>
-          </div>
-        </li>
-        <li class="animate-in" style="transition-delay:.2s">
-          <span class="icon">🏪</span>
-          <div class="text">
-            <strong>도매상 동시 운영 — 전국 공급 OK</strong>
-            <span>공급현황 실시간 확인가능, 이슈품목 다수 재고보유, 원내 주사제 공급 및 판매대행 정산까지 가능</span>
-          </div>
-        </li>
-        <li class="animate-in" style="transition-delay:.3s">
-          <span class="icon">🎓</span>
-          <div class="text">
-            <strong>정기 심포지엄 & 지역별 세미나</strong>
-            <span>우수 회원사 대상 연 2회 제약사 심포지엄 초청, 전국 지점별 신제품 세미나 개최</span>
-          </div>
-        </li>
-      </ul>
     </div>
   </div>
 </section>
@@ -1049,7 +1028,7 @@
           <strong style="color:#ff6b6b;white-space:nowrap">차감&nbsp;없이</strong> 제약사에서 받은 그대로 지급합니다.
           CSO 운영 10년간 대표님들과의 Win-Win 관계로 가능한 혜택입니다.
         </div>
-        <span class="strength-highlight blurred">대웅바이오 베아투스정 40% + 4% = 44%</span>
+        <span class="strength-highlight blurred"><span class="blur-name">대웅바이오 베아투스정</span> <span class="blur-num">40% + 4% = 44%</span></span>
       </div>
 
       <div class="strength-card animate-in" style="transition-delay:.2s">
@@ -1128,18 +1107,18 @@
           <span>(주)우리메디텍 블로그</span>
         </div>
       </a>
-      <a href="https://blog.naver.com/woorimedi2018" target="_blank" rel="noopener" class="channel-card animate-in" style="transition-delay:.1s">
-        <div class="channel-icon" style="background:rgba(41,121,255,0.2);border:1px solid rgba(41,121,255,0.3);">🔒</div>
+      <a href="https://www.youtube.com/@CSO%EC%9A%B0%EB%A6%AC%EB%A9%94%EB%94%94%ED%85%8D" target="_blank" rel="noopener" class="channel-card animate-in" style="transition-delay:.1s">
+        <div class="channel-icon" style="background:#FF0000;">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12z"/></svg>
+        </div>
         <div class="channel-info">
-          <strong>비공개 카페</strong>
-          <span>제품 및 정보 공유</span>
+          <strong>우리메디텍 유튜브</strong>
         </div>
       </a>
-      <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="channel-card animate-in" style="transition-delay:.15s">
+      <a href="https://open.kakao.com/o/gB9CcgJc" target="_blank" rel="noopener" class="channel-card animate-in" style="transition-delay:.15s">
         <div class="channel-icon" style="background:rgba(41,121,255,0.2);border:1px solid rgba(41,121,255,0.3);">📢</div>
         <div class="channel-info">
-          <strong>오픈 채팅방</strong>
-          <span>실시간 공지 안내</span>
+          <strong>비공개 오픈채팅방</strong>
         </div>
       </a>
       <a href="https://play.google.com/store/apps/details?id=com.woorieditech.cso" target="_blank" rel="noopener" class="channel-card animate-in" style="transition-delay:.2s">
@@ -1190,18 +1169,14 @@
   <button class="blog-banner-close" type="button" aria-label="닫기">×</button>
 </a>
 
+<!-- 플로팅 버튼 -->
 <div class="floating-btns">
+  <a href="https://www.youtube.com/@CSO%EC%9A%B0%EB%A6%AC%EB%A9%94%EB%94%94%ED%85%8D" target="_blank" rel="noopener" class="float-youtube" aria-label="우리메디텍 유튜브 바로가기">
+    <img src="youtube-fab.png" alt="우리메디텍 유튜브">
+  </a>
   <a href="https://pf.kakao.com/_pgRcn" target="_blank" rel="noopener" class="float-btn float-kakao">
     <span class="ficon">💬</span>
     <span>카톡상담</span>
-  </a>
-  <a href="#contact" class="float-btn float-inquiry">
-    <span class="ficon">📋</span>
-    <span>상담문의</span>
-  </a>
-  <a href="tel:010-2886-0339" class="float-btn float-phone">
-    <span class="ficon">📞</span>
-    <span>전화상담</span>
   </a>
   <a href="https://play.google.com/store/apps/details?id=com.woorieditech.cso" target="_blank" rel="noopener" class="float-btn float-app">
     <span class="ficon">
